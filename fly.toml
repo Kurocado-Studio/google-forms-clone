@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for styleguide-remix-template-ancient-night-4492 on 2024-10-28T20:56:38-05:00
+# fly.toml app configuration file generated for google-forms-clone on 2025-03-01T15:19:14-06:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'styleguide-remix-template'
+app = 'google-forms-clone'
 primary_region = 'ord'
 
 [build]
