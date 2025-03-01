@@ -1,0 +1,21 @@
+#
+# Made with ❤️ and adobo by Kurocado Studio
+# Copyright (c) 2024. All Rights Reserved.
+#
+# Learn more about Kurocado Studio: {@link https://www.kurocado.studio}
+#
+# Explore our open-source projects: {@link https://github.com/kurocado-studio}
+#
+
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  - package-ecosystem: pnpm # See documentation for possible values
+    directory: '/' # Location of package manifests
+    schedule:
+      interval: weekly
+      open-pull-requests-limit: 10
+      labels:
+        - dependencies
+        - dependabot
