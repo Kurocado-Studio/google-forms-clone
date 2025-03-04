@@ -52,3 +52,19 @@ declare module '*.css' {
 
   export default content;
 }
+
+declare module '*css.?url' {
+  const content: string;
+  export default content;
+}
+
+interface ImportMetaEnv {
+  readonly VITE_AUTH_DOMAIN: string;
+  readonly VITE_AUTH_CLIENT_ID: string;
+  readonly VITE_AUTH_AUDIENCE: string;
+  readonly VITE_AUTH_SCOPE: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}

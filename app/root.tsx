@@ -1,5 +1,6 @@
 /* eslint unicorn/filename-case: 0 */
 /* eslint import/no-default-export: 0 */
+import { AuthAccessSilentlyProvider } from '@kurocado-studio/iam';
 import type { LinksFunction } from '@remix-run/node';
 import {
   Links,
@@ -27,6 +28,15 @@ export function Layout({
 }: {
   children: React.ReactNode;
 }): React.ReactNode {
+  const domain = import.meta.env.VITE_AUTH_DOMAIN;
+  const clientId = import.meta.env.VITE_AUTH_CLIENT_ID;
+
+  const [redirectUri, setRedirectUri] = React.useState<string>('');
+
+  React.useEffect(() => {
+    setRedirectUri(window.location.origin);
+  }, []);
+
   return (
     <html lang='en'>
       <head>
@@ -41,7 +51,15 @@ export function Layout({
         data-testid='root-body-test-id'
         suppressHydrationWarning
       >
-        {children}
+        <AuthAccessSilentlyProvider
+          domain={domain}
+          clientId={clientId}
+          authorizationParams={{ redirectUri }}
+        >
+          {({ isLoading, isAuthenticated }) => {
+            return isAuthenticated && !isLoading ? children : null;
+          }}
+        </AuthAccessSilentlyProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
