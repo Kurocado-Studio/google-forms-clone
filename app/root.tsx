@@ -9,6 +9,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+import { get } from 'lodash-es';
 import React from 'react';
 
 // @see https://remix.run/docs/en/main/styling/tailwind
@@ -28,9 +29,13 @@ export function Layout({
 }: {
   children: React.ReactNode;
 }): React.ReactNode {
-  const domain = import.meta.env.VITE_AUTH_DOMAIN;
-  const clientId = import.meta.env.VITE_AUTH_CLIENT_ID;
-  const redirectUri = import.meta.env.VITE_AUTH_REDIRECT_URI;
+  const domain = get(process, ['env', 'VITE_AUTH_DOMAIN'], '');
+  const clientId = get(process, ['env', 'VITE_AUTH_CLIENT_ID'], '');
+  const redirectUri = get(
+    process,
+    ['env', 'VITE_AUTH_REDIRECT_URI'],
+    'http://localhost:3000',
+  );
 
   return (
     <html lang='en'>
@@ -49,7 +54,7 @@ export function Layout({
         <AuthAccessSilentlyProvider
           domain={domain}
           clientId={clientId}
-          authorizationParams={{ redirect_uri: redirectUri }}
+          authorizationParams={{ redirectUri }}
         >
           {({ isLoading, isAuthenticated }) => {
             return isAuthenticated && !isLoading ? (
