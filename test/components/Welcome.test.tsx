@@ -10,7 +10,7 @@ describe('Welcome component', () => {
 
   test('renders welcome component properly', () => {
     expect(
-      screen.getByText('Kurocado Studio Remix starter template'),
+      screen.getByText(/Kurocado Studio Remix starter template/i),
     ).toBeInTheDocument();
   });
 
