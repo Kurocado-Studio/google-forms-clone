@@ -49,7 +49,7 @@ export function Layout({
         <AuthAccessSilentlyProvider
           domain={domain}
           clientId={clientId}
-          authorizationParams={{ redirectUri }}
+          authorizationParams={{ redirect_uri: redirectUri }}
         >
           {({ isLoading, isAuthenticated }) => {
             return isAuthenticated && !isLoading ? (

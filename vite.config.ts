@@ -16,6 +16,7 @@ export default defineConfig({
   server: {
     // mostly to allow CodeSandbox URLs
     allowedHosts: true,
+    port: 3000,
   },
   optimizeDeps: {
     exclude: ['remix:manifest'],
