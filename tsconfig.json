@@ -4,8 +4,8 @@
     "@kurocado-studio/qa/remix/tsconfig.qa",
     "@kurocado-studio/styleguide/remix/tsconfig"
   ],
-  "types": ["@types/react"],
   "compilerOptions": {
+    "types": ["@types/react", "vitest/globals", "@testing-library/jest-dom"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "rootDir": ".",

@@ -57,7 +57,11 @@ export function Layout({
           authorizationParams={{ redirectUri }}
         >
           {({ isLoading, isAuthenticated }) => {
-            return isAuthenticated && !isLoading ? children : null;
+            return isAuthenticated && !isLoading ? (
+              children
+            ) : (
+              <div data-testid='loader' />
+            );
           }}
         </AuthAccessSilentlyProvider>
         <ScrollRestoration />

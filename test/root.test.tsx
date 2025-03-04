@@ -26,9 +26,7 @@ describe('App component', () => {
     renderComponent(<RemixStub />);
   });
 
-  test('renders children component properly', () => {
-    expect(
-      screen.getByText('Kurocado Studio Remix starter template'),
-    ).toBeInTheDocument();
+  test('should display the loader initially', () => {
+    expect(screen.getByTestId(/loader/i)).toBeInTheDocument();
   });
 });
