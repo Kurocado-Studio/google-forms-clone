@@ -1,15 +1,8 @@
 import { useAuthAccessSilently } from '@kurocado-studio/iam';
-import { get } from 'lodash-es';
 import * as React from 'react';
 
 export function Welcome(): React.ReactNode {
   const { logOut } = useAuthAccessSilently();
-
-  const returnToLoginOrigin = get(
-    import.meta,
-    ['env', 'VITE_AUTH_REDIRECT_URI'],
-    '',
-  );
 
   return (
     <main className='bg-white'>
@@ -42,7 +35,7 @@ export function Welcome(): React.ReactNode {
             onClick={() =>
               logOut({
                 logoutParams: {
-                  returnTo: returnToLoginOrigin,
+                  returnTo: import.meta.env.VITE_AUTH_REDIRECT_URI,
                 },
               })
             }

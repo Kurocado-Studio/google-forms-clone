@@ -16,13 +16,6 @@ export default defineConfig({
   server: {
     // mostly to allow CodeSandbox URLs
     allowedHosts: true,
-    port: 3000,
-  },
-  define: {
-    'process.env.VITE_AUTH_DOMAIN': 'import.meta.env.VITE_AUTH_DOMAIN',
-    'process.env.VITE_AUTH_CLIENT_ID': 'import.meta.env.VITE_AUTH_CLIENT_ID',
-    'process.env.VITE_AUTH_REDIRECT_URI':
-      'import.meta.env.VITE_AUTH_REDIRECT_URI',
   },
   optimizeDeps: {
     exclude: ['remix:manifest'],
