@@ -1,8 +1,15 @@
 import { useAuthAccessSilently } from '@kurocado-studio/iam';
+import { get } from 'lodash-es';
 import * as React from 'react';
 
 export function Welcome(): React.ReactNode {
   const { logOut } = useAuthAccessSilently();
+
+  const returnToLoginOrigin = get(
+    import.meta,
+    ['env', 'VITE_AUTH_REDIRECT_URI'],
+    '',
+  );
 
   return (
     <main className='bg-white'>
@@ -32,7 +39,13 @@ export function Welcome(): React.ReactNode {
           <button
             className='rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
             type='button'
-            onClick={logOut}
+            onClick={() =>
+              logOut({
+                logoutParams: {
+                  returnTo: returnToLoginOrigin,
+                },
+              })
+            }
           >
             Log me out
           </button>
