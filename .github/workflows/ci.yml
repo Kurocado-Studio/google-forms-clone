@@ -37,6 +37,14 @@ jobs:
     uses: kurocado-studio/dev-ops/.github/workflows/workflow.document.yml@main
     secrets: inherit
 
+  deploy:
+    needs: test
+    uses: kurocado-studio/dev-ops/.github/workflows/workflow.deploy.yml@main
+    with:
+      branch_name: ${{ github.ref_name }}
+    secrets:
+      fly_api_token: ${{ secrets.FLY_API_TOKEN }}
+
   release:
     needs: test
     uses: kurocado-studio/dev-ops/.github/workflows/workflow.release.yml@main

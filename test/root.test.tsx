@@ -27,6 +27,8 @@ describe('App component', () => {
   });
 
   test('should display the loader initially', () => {
-    expect(screen.getByTestId(/loader/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Kurocado Studio Remix starter template/i),
+    ).toBeInTheDocument();
   });
 });

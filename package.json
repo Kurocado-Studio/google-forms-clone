@@ -1,5 +1,5 @@
 {
-  "name": "@kurocado-studio/styleguide-remix-template",
+  "name": "@kurocado-studio/google-forms-clone",
   "version": "0.0.0-semantically-released",
   "private": true,
   "type": "module",
@@ -29,7 +29,6 @@
     ]
   },
   "dependencies": {
-    "@kurocado-studio/iam": "1.0.0-alpha.2",
     "@remix-run/node": "^2.15.3",
     "@remix-run/react": "^2.15.3",
     "autoprefixer": "^10.4.20",
